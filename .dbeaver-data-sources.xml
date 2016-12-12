@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="mysql5-158f3161a20-607ee4d51aaed43e" provider="mysql" driver="mysql5" name="MySQL - mysql(root)" create-date="1481547082092" login-date="1481547083626" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="3306" server="" database="mysql" url="jdbc:mysql://localhost:3306/mysql" user="root" password="AQsJNFNMSwJl8w==" home="C:\Program Files\MySQL\MySQL Server 5.6" type="dev">
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" user="" save-password="false">
+				<property name="socks-host" value=""/>
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+			<network-handler type="CONFIG" id="mysql_ssl" enabled="false" user="" save-password="false">
+				<property name="ssl.public.key.retrieve" value="false"/>
+				<property name="ssl.verify.server" value="true"/>
+				<property name="ssl.client.cert" value=""/>
+				<property name="ssl.client.key" value=""/>
+				<property name="ssl.ca.cert" value=""/>
+				<property name="ssl.cipher.suites" value=""/>
+				<property name="ssl.require" value="false"/>
+			</network-handler>
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" user="" save-password="false">
+				<property name="port" value="22"/>
+				<property name="keyPath" value=""/>
+				<property name="host" value=""/>
+				<property name="authType" value="PASSWORD"/>
+			</network-handler>
+			<bootstrap/>
+		</connection>
+	</data-source>
+	<data-source id="mysql5-158f316cbf2-4d2aecfd17c9dd53" provider="mysql" driver="mysql5" name="MySQL - coffee_project(user_coffee)" create-date="1481547133276" login-date="1481547135389" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="3306" server="" database="coffee_project" url="jdbc:mysql://localhost:3306/coffee_project" user="user_coffee" password="AQsJNFNMSwJl8w==" home="C:\Program Files\MySQL\MySQL Server 5.6" type="dev">
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" user="" save-password="false">
+				<property name="socks-host" value=""/>
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+			<network-handler type="CONFIG" id="mysql_ssl" enabled="false" user="" save-password="false">
+				<property name="ssl.public.key.retrieve" value="false"/>
+				<property name="ssl.verify.server" value="true"/>
+				<property name="ssl.client.cert" value=""/>
+				<property name="ssl.client.key" value=""/>
+				<property name="ssl.ca.cert" value=""/>
+				<property name="ssl.cipher.suites" value=""/>
+				<property name="ssl.require" value="false"/>
+			</network-handler>
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" user="" save-password="false">
+				<property name="port" value="22"/>
+				<property name="keyPath" value=""/>
+				<property name="host" value=""/>
+				<property name="authType" value="PASSWORD"/>
+			</network-handler>
+			<bootstrap/>
+		</connection>
+	</data-source>
+	<data-source id="mysql5-158f31b4219-2b4cbedc058558ca" provider="mysql" driver="mysql5" name="MySQL - coffee(user_coffee)" create-date="1481547420499" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="3306" server="" database="coffee" url="jdbc:mysql://localhost:3306/coffee" user="user_coffee" password="AQsJNFNMSwJl8w==" home="C:\Program Files\MySQL\MySQL Server 5.6" type="dev">
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" user="" save-password="false">
+				<property name="socks-host" value=""/>
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+			<network-handler type="CONFIG" id="mysql_ssl" enabled="false" user="" save-password="false">
+				<property name="ssl.public.key.retrieve" value="false"/>
+				<property name="ssl.verify.server" value="true"/>
+				<property name="ssl.client.cert" value=""/>
+				<property name="ssl.client.key" value=""/>
+				<property name="ssl.ca.cert" value=""/>
+				<property name="ssl.cipher.suites" value=""/>
+				<property name="ssl.require" value="false"/>
+			</network-handler>
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" user="" save-password="false">
+				<property name="port" value="22"/>
+				<property name="keyPath" value=""/>
+				<property name="host" value=""/>
+				<property name="authType" value="PASSWORD"/>
+			</network-handler>
+			<bootstrap/>
+		</connection>
+	</data-source>
+</data-sources>
