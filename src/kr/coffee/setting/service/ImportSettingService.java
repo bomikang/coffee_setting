@@ -18,13 +18,13 @@ public class ImportSettingService extends ServiceSetting{
 				
 		dao.setForeignKeyCheck(0);
 		for(String tableName : Config.TABLE_NAME){
-			executeImportDate(getFilePath(tableName), tableName);
+			executeImportDate(getFilePath(tableName, true), tableName);
 		}
 		dao.setForeignKeyCheck(1);		
 	}
 	
 	private void executeImportDate(String tablePath, String tableName) {
-		String sql = String.format("LOAD DATA INFILE '%s' INTO TABLE %s character set 'UTF8' fields TERMINATED by ','",
+		String sql = String.format("LOAD DATA LOCAL INFILE '%s' INTO TABLE %s character set 'UTF8' fields TERMINATED by ','",
 				tablePath, tableName);
 		Statement stmt = null;
 		try {

@@ -20,7 +20,7 @@ public class ExportSettingService extends ServiceSetting{
 		checkBackupDir();
 		
 		for(String tableName : Config.TABLE_NAME){
-			executeExportData(getFilePath(tableName), tableName);
+			executeExportData(getFilePath(tableName, false), tableName);
 		}		
 	}
 	
