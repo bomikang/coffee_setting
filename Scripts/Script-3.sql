@@ -85,6 +85,16 @@ update sale set price=4000, salecnt=100, marginRate=10 where code='A003';
 select * 
 from sale inner join sale_detail on sale.code=sale_detail.code;
 
+select code 제품코드, price 제품단가, saleCnt 판매수량, marginRate 마진율 from sale;
 
+select sum(supply_price) , sum(addTax) ,sum(sale_price),  sum(marginPrice) from sale_detail;
 
+-- 판매금액 순위
+select (select count(*)+1 from sale_detail s2 where s2.sale_price > s1.sale_price) rank, 
+       s1.code code,p.name name, price 판매단가, salecnt 판매수량, supply_price 공급가액, addTax 부가세액, sale_price 판매금액, marginRate 마진율, marginPrice 마진액
+from sale inner join sale_detail s1 on sale.code = s1.code join product p on s1.code = p.code order by rank;
 
+-- 마진액 순위
+select (select count(*)+1 from sale_detail s2 where s2.marginPrice > s1.marginPrice) rank, 
+ s1.code 제품코드,p.name 제품명, price 판매단가, salecnt 판매수량, supply_price 공급가액, addTax 부가세액, sale_price 판매금액, marginRate 마진율, marginPrice 마진액
+from sale inner join sale_detail s1 on sale.code = s1.code join product p on s1.code = p.code order by rank;
