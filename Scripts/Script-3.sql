@@ -38,8 +38,7 @@ insert into coffee.product(code, name) values('B004', '아이스초코');
 
 
 CREATE TRIGGER tri_sale_after_insert_detail
-AFTER INSERT
-ON coffee.sale
+AFTER insert ON sale
 FOR EACH ROW
 begin
 	set @saleprice=NEW.price*new.salecnt,
@@ -50,6 +49,22 @@ begin
     values (new.code, @saleprice, @addtax, @supPrice, @marPrice);
 END;
 
+DROP TRIGGER coffee.tri_sale_after_insert_detail;
+
+CREATE TRIGGER tri_sale_after_update_detail
+   AFTER update ON sale
+   FOR EACH ROW
+begin
+	SET @saleprice=NEW.price*new.salecnt,
+	@addtax=ceil(NEW.price*new.salecnt/11),
+	@supPrice=@saleprice - @addtax,
+	@marPrice=@supPrice*(new.marginRate/100);
+   UPDATE sale_detail
+      SET code=new.code, sale_price=@saleprice, addTax=@addtax, supply_price=@supPrice, marginPrice=@marPrice
+    WHERE code = NEW.code;
+END;
+
+DROP TRIGGER coffee.tri_sale_after_update_detail;
 
 
 select code 제품코드, price 제품단가, saleCnt 판매수량, marginRate 마진율 from sale;
@@ -63,5 +78,13 @@ insert into coffee.sale values('B002', 4300, 110, 11);
 delete from sale;
 
 select * from sale_detail;
+
+
+insert into sale values('A003', 4300, 110, 11);
+update sale set price=4000, salecnt=100, marginRate=10 where code='A003';
+select * 
+from sale inner join sale_detail on sale.code=sale_detail.code;
+
+
 
 

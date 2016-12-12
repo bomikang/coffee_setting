@@ -10,6 +10,7 @@ public class InitSettingService extends ServiceSetting {
 	public void initSetting() {
 		createDataBase();	// 데이터베이스를 생성
 		createTable(); 		// 해당 데이터베이스에서 테이블 생성
+		createTrigger();
 		createUser(); 		// 해당 데이터베이스 사용자 추가
 	}
 
@@ -24,9 +25,15 @@ public class InitSettingService extends ServiceSetting {
 		for (int i = 0; i < Config.TABLE_NAME.length; i++) {
 			dao.createTable(Config.CREATE_SQL[i]);
 		}
-		dao.createTrigger();
 	}
 
+	private void createTrigger() {
+		TableDao dao = TableDao.getInstance();
+		for (int i = 0; i < Config.CREATE_TRIGGER.length; i++) {
+			dao.createTrigger(Config.CREATE_TRIGGER[i]);
+		}
+	}
+	
 	private void createUser() {
 		UserDao.getInstance().initUser();
 	}

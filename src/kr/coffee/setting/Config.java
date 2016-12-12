@@ -40,16 +40,30 @@ public class Config {
 			+ "FOREIGN KEY (code) REFERENCES product (code) on delete cascade)"
 	};
 	
-	public static final String CREATE_TRIGGER = 
+	public static final String[] CREATE_TRIGGER = {
 			"CREATE TRIGGER tri_sale_after_insert_detail "
 			+ "AFTER INSERT ON sale "
 			+ "FOR EACH ROW "
-			+ "begin "
+			+ "BEGIN "
 			+   "set @saleprice=NEW.price*new.salecnt, "
 			+   "@addtax=ceil(NEW.price*new.salecnt/11), "
 			+   "@supPrice=@saleprice - @addtax, "
 			+   "@marPrice=@supPrice*(new.marginRate/100); "
 			+   "INSERT INTO sale_detail(code, sale_price, addTax, supply_price, marginPrice) "
 			+   "values (new.code, @saleprice, @addtax, @supPrice, @marPrice);"
-			+ "END;";
+			+ "END;",
+			
+			"CREATE TRIGGER tri_sale_after_update_detail "
+			+ "AFTER UPDATE ON sale "
+			+ "FOR EACH ROW "
+			+ "BEGIN "
+			+ 	"SET @saleprice=NEW.price*new.salecnt, "
+			+ 	"@addtax=ceil(NEW.price*new.salecnt/11), "
+			+ 	"@supPrice=@saleprice - @addtax, "
+			+ 	"@marPrice=@supPrice*(new.marginRate/100); "
+			+ 	"UPDATE sale_detail "
+			+ 	"SET code=new.code, sale_price=@saleprice, addTax=@addtax, supply_price=@supPrice, marginPrice=@marPrice "
+			+ 	"WHERE code = NEW.code;"
+			+ "END;"
+	};
 }

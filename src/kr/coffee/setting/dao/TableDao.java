@@ -35,10 +35,10 @@ public class TableDao {
 
 	}
 	
-	public void createTrigger(){
+	public void createTrigger(String sql){
 		Connection con = DBCon.getConnection();
 		try {
-			pstmt = con.prepareStatement(Config.CREATE_TRIGGER);
+			pstmt = con.prepareStatement(sql);
 			pstmt.execute();
 			System.out.printf("CREATE Trigger Success! %n");
 		} catch (SQLException e) {
